@@ -1,0 +1,15 @@
+# Discord webhook za klasterske alarme (Prometheus → AlertManager → Discord).
+# Ove vrednosti se prosleđuju shop-operator-u koji kreira ClusterAlerts resurse.
+#
+# Obavezno postaviti pre deploy-a:
+#   kubectl create secret generic shophub-discord-secrets \
+#     --namespace monitoring \
+#     --from-literal=clusterDiscordWebhookUrl=<discord_webhook_url>
+
+clusterDiscordWebhookUrl: ""
+clusterAlertsNamespace: monitoring
+
+# Samo Discord komponenta — operator deployer je u shop-operator app-u
+replicaCount: 0
+serviceAccount:
+  create: false

@@ -1,0 +1,32 @@
+backend:
+  image:
+    repository: ghcr.io/shophub-platform/shophub
+    tag: "latest"
+  port: 8080
+  shopNamespace: default
+  shopUrlTemplate: "http://{name}.127.0.0.1.nip.io"
+  # Obavezna tajna:
+  #   kubectl create secret generic shophub-secrets --from-literal=jwtSecret=<secret>
+  jwtSecret: ""
+
+frontend:
+  enabled: true
+  image:
+    repository: ghcr.io/shophub-platform/shophub-frontend
+    tag: "latest"
+  port: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  host: shophub.127.0.0.1.nip.io
+
+postgresql:
+  enabled: true
+  auth:
+    username: shophub
+    password: ""
+    database: shophub
+  primary:
+    persistence:
+      size: 2Gi

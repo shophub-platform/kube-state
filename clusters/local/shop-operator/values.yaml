@@ -1,0 +1,19 @@
+image:
+  repository: ghcr.io/shophub-platform/shop-operator
+  tag: "0.1.0"
+
+ingressDomain: "127.0.0.1.nip.io"
+shopNamespace: default
+defaultShopImage: "ghcr.io/shophub-platform/shop:latest"
+defaultFrontendImage: "ghcr.io/shophub-platform/shop-frontend:latest"
+
+# Obavezne tajne — postaviti pre deploy-a:
+#   kubectl create secret generic shop-operator-secrets \
+#     --from-literal=walletEncryptionKey=<key> \
+#     --from-literal=sepoliaRpcUrl=<url> \
+#     --from-literal=mockusdtAddress=<addr>
+walletEncryptionKey: ""
+sepoliaRpcUrl: ""
+mockusdtAddress: ""
+
+clusterAlertsNamespace: "monitoring"
