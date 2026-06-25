@@ -1,0 +1,26 @@
+---
+# ArgoCD Application — shophub
+# Deploy-uje ShopHub backend API, frontend i PostgreSQL bazu.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: shophub
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: oci://ghcr.io/shophub-platform/helm-charts
+    chart: shophub
+    targetRevision: "0.1.0"
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

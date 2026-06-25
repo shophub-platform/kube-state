@@ -1,0 +1,17 @@
+---
+# Metapodaci lokalnog razvojnog klastera.
+# Ovaj fajl opisuje klaster i koristi se od strane ArgoCD ApplicationSet-a
+# kao izvor za generisanje Application resursa za svaku komponentu.
+#
+# Pokretanje klastera: bash scripts/cluster-up.sh
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-metadata
+  namespace: default
+data:
+  name: "local"
+  provider: "k3d"
+  description: "Lokalni razvojni klaster za ShopHub platformu"
+  ingressDomain: "127.0.0.1.nip.io"
+  region: "local"
