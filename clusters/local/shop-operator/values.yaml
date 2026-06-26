@@ -16,4 +16,5 @@ walletEncryptionKey: ""
 sepoliaRpcUrl: ""
 mockusdtAddress: ""
 
+discordGuildId: "1519784209307402280"
 clusterAlertsNamespace: "monitoring"
